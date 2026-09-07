@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disa | ديسا - بكل لقمة حكاية</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="assets/logo.jpg">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="شركة ديسا: من قلب سوريا إلى كل بيت. حبوب وبقوليات مختارة بعناية فائقة لتمنحك طعماً طبيعياً غنياً وصحياً بأعلى معايير الجودة والنظافة.">
+    <meta name="keywords" content="ديسا, Disa, حبوب, بقوليات, فريكة, أرز, سوريا, ريف دمشق, طعام صحي, منتجات طبيعية, تعبئة معقمة, معكرونة">
+    <meta name="author" content="شركة ديسا">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.disa.com/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.disa.com/">
+    <meta property="og:title" content="Disa | ديسا - بكل لقمة حكاية">
+    <meta property="og:description" content="شركة ديسا: حبوب وبقوليات مختارة بعناية لتمنحك طعماً طبيعياً غنياً وصحياً.">
+    <meta property="og:image" content="https://www.disa.com/assets/logo.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.disa.com/">
+    <meta property="twitter:title" content="Disa | ديسا - بكل لقمة حكاية">
+    <meta property="twitter:description" content="شركة ديسا: حبوب وبقوليات مختارة بعناية لتمنحك طعماً طبيعياً غنياً وصحياً.">
+    <meta property="twitter:image" content="https://www.disa.com/assets/logo.jpg">
+    <!-- Google Fonts: Tajawal -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Tailwind CSS (CDN for zero-build setup) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Config for Brand Colors -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        disa: {
+                            light: '#e8e6d9',
+                            primary: '#8dc63f',
+                            dark: '#4b792b',
+                            orange: '#ff7b00',
+                            text: '#2b3024',
+                            white: '#f9f9f6'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Tajawal', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-disa-light text-disa-text font-sans antialiased overflow-x-hidden">
+
+    <!-- Header / Navbar -->
+    <header class="fixed w-full top-0 z-50 glass-nav transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 md:px-8 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#" class="flex items-center group">
+                <img src="assets/logo.jpg" alt="Disa Logo" class="h-14 w-auto object-contain mix-blend-multiply group-hover:scale-105 transition-transform">
+            </a>
+
+            <!-- Desktop Menu -->
+            <nav class="hidden md:flex items-center gap-8 font-bold text-lg">
+                <a href="#home" class="nav-link active text-disa-dark hover:text-disa-orange transition-colors" data-i18n="nav.home">الرئيسية</a>
+                <a href="#about" class="nav-link text-gray-600 hover:text-disa-orange transition-colors" data-i18n="nav.about">من نحن</a>
+                <a href="#products" class="nav-link text-gray-600 hover:text-disa-orange transition-colors" data-i18n="nav.products">المنتجات</a>
+                <a href="#offers" class="nav-link text-gray-600 hover:text-disa-orange transition-colors" data-i18n="nav.offers">العروض</a>
+                <a href="#contact" class="nav-link text-gray-600 hover:text-disa-orange transition-colors" data-i18n="nav.contact">اتصل بنا</a>
+            </nav>
+
+            <!-- Actions -->
+            <div class="flex items-center gap-4">
+                <button onclick="toggleLanguage()" class="flex items-center justify-center gap-2 bg-white/80 backdrop-blur-sm border border-gray-200 hover:border-disa-primary hover:text-disa-primary text-gray-700 px-4 py-2 rounded-full font-bold transition-all shadow-sm group">
+                    <i class="fa-solid fa-globe group-hover:animate-spin-slow"></i>
+                    <span id="lang-btn-text">EN</span>
+                </button>
+                <div class="relative cursor-pointer group" onclick="toggleCart()">
+                    <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-md text-disa-dark group-hover:bg-disa-primary group-hover:text-white transition-all">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </div>
+                    <span class="absolute -top-1 -right-1 bg-disa-orange text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full shadow-lg" id="cart-count">0</span>
+                </div>
+                <!-- Mobile Menu Toggle -->
+                <button class="md:hidden text-disa-dark text-2xl" id="mobile-menu-btn">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Shopping Cart Sidebar -->
+    <div id="cart-sidebar" class="fixed top-0 left-0 h-full w-80 bg-white shadow-2xl z-[60] transform -translate-x-full transition-transform duration-300 flex flex-col">
+        <div class="p-6 bg-disa-primary text-white flex justify-between items-center rounded-br-3xl">
+            <h2 class="text-2xl font-bold">سلة المشتريات</h2>
+            <button onclick="toggleCart()" class="text-white hover:text-disa-light text-xl"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="flex-1 p-6 overflow-y-auto" id="cart-items">
+            <!-- Cart items will be injected here -->
+            <div class="flex flex-col items-center justify-center h-full text-gray-400">
+                <i class="fa-solid fa-cart-plus text-6xl mb-4"></i>
+                <p>السلة فارغة حالياً</p>
+            </div>
+        </div>
+        <div class="p-6 border-t border-gray-100 bg-gray-50">
+            <div class="flex justify-between font-bold text-lg mb-4 text-disa-dark">
+                <span>المجموع:</span>
+                <span id="cart-total">0 ل.س</span>
+            </div>
+            <button class="w-full bg-disa-orange text-white py-3 rounded-xl font-bold hover:bg-orange-600 transition-colors shadow-lg shadow-orange-500/30">إتمام الطلب</button>
+        </div>
+    </div>
+    <!-- Cart Overlay -->
+    <div id="cart-overlay" class="fixed inset-0 bg-black/50 z-[55] hidden opacity-0 transition-opacity duration-300" onclick="toggleCart()"></div>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center pt-24 overflow-hidden bg-gradient-to-br from-disa-light/40 via-white to-disa-light/60">
+        <!-- Abstract Shapes for clean depth -->
+        <div class="absolute -right-20 top-20 w-96 h-96 bg-disa-orange rounded-full mix-blend-multiply filter blur-3xl opacity-5 animate-blob"></div>
+        <div class="absolute top-40 left-10 w-72 h-72 bg-disa-primary rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob animation-delay-2000"></div>
+
+        <div class="max-w-7xl mx-auto px-4 md:px-8 relative z-10 grid md:grid-cols-2 gap-12 items-center">
+            <div data-aos="fade-left" data-aos-duration="1000">
+                <div class="inline-block px-4 py-1 rounded-full bg-disa-orange/10 text-disa-orange font-bold mb-6 border border-disa-orange/20 text-sm tracking-wide" data-i18n="hero.badge">أصالة الطعم، جودة ونظافة</div>
+                <h1 class="text-6xl md:text-8xl font-black leading-[1.1] mb-6 drop-shadow-xl text-transparent bg-clip-text bg-gradient-to-br from-gray-900 via-disa-primary to-disa-orange">
+                    <span data-i18n="hero.title1">بكل لقمة</span> <br> <span class="relative inline-block mt-2"><span data-i18n="hero.title2">حكاية</span>
+                        <svg class="absolute w-full h-4 -bottom-2 left-0 text-disa-orange/40" viewBox="0 0 100 10" preserveAspectRatio="none"><path d="M0 5 Q 50 15 100 5" stroke="currentColor" stroke-width="4" fill="transparent"/></svg>
+                    </span>
+                </h1>
+                <p class="text-xl text-gray-600 mb-8 max-w-lg leading-relaxed font-medium" data-i18n="hero.desc">
+                    من قلب سوريا إلى كل بيت. حبوب وبقوليات مختارة بعناية فائقة لتمنحك طعماً طبيعياً غنياً وصحياً.
+                </p>
+                <div class="flex gap-4">
+                    <a href="#products" class="bg-disa-primary text-white px-8 py-4 rounded-full font-bold hover:bg-disa-dark transition-all transform hover:-translate-y-1 shadow-lg shadow-disa-primary/30 flex items-center gap-2" data-i18n="btn.shop">
+                        تسوق الآن <i class="fa-solid fa-arrow-left ltr-arrow"></i>
+                    </a>
+                    <a href="#offers" class="bg-white text-disa-dark px-8 py-4 rounded-full font-bold hover:bg-gray-50 transition-all border border-gray-200 shadow-sm flex items-center gap-2" data-i18n="btn.offers">
+                        شاهد العروض
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Clean Hero Image -->
+            <div class="relative hidden md:flex justify-center items-center" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="200">
+                <div class="relative w-[450px] h-[450px]">
+                    <!-- Clean, focused image -->
+                    <img src="assets/disa-1.jpg" alt="Premium Grains" class="w-full h-full object-cover rounded-full shadow-2xl border-[16px] border-white z-20 relative float-animation">
+                    <!-- Accent Leaf -->
+                    <div class="absolute -right-8 top-12 w-24 h-24 bg-white rounded-full shadow-xl flex items-center justify-center z-30 float-animation-delayed text-disa-primary text-4xl">
+                        <i class="fa-solid fa-leaf"></i>
+                    </div>
+                    <!-- Quality Badge -->
+                    <div class="absolute -left-12 bottom-12 w-36 h-36 bg-disa-dark rounded-full shadow-2xl flex flex-col items-center justify-center z-30 float-animation text-white p-4 text-center border-[6px] border-white">
+                        <i class="fa-solid fa-medal text-3xl text-disa-orange mb-1"></i>
+                        <span class="text-sm font-bold leading-tight mt-1" data-i18n="quality.badge">جودة<br>مضمونة</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 md:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
+                <h2 class="text-disa-orange font-bold text-xl mb-2" data-i18n="about.title1">لماذا نحن موجودون؟</h2>
+                <h3 class="text-4xl font-black text-disa-dark mb-6" data-i18n="about.title2">الأمانة هي بوصلتنا</h3>
+                <p class="text-lg text-gray-600 leading-relaxed font-medium">
+                    <span data-i18n="about.p1">في ديسا، نؤمن بأن الغذاء الصحي هو أساس الحياة السعيدة. تأسست شركتنا في ريف دمشق بهدف تقديم أفضل أنواع الحبوب والبقوليات للأسرة السورية والعربية.</span><br>
+                    <span class="text-disa-orange font-bold mt-4 inline-block px-4 py-2 bg-disa-orange/10 rounded-xl" data-i18n="about.p2">نعتمد على أحدث آلات التعبئة الآلية لضمان وصول المنتج إليك بأعلى معايير النظافة والتعقيم، دون أن تمسه الأيدي.</span>
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-disa-light/50 p-8 rounded-3xl border border-disa-primary/20 hover:border-disa-primary transition-colors group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center text-disa-primary text-2xl mb-6 shadow-md group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold text-disa-dark mb-4" data-i18n="about.f1.t">معايير صارمة</h4>
+                    <p class="text-gray-600" data-i18n="about.f1.p">نلتزم بأعلى معايير الجودة والسلامة الغذائية لتقديم منتج صحي يليق بموائدكم.</p>
+                </div>
+                <!-- Feature 2 -->
+                <div class="bg-disa-light/50 p-8 rounded-3xl border border-disa-orange/20 hover:border-disa-orange transition-colors group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center text-disa-orange text-2xl mb-6 shadow-md group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-seedling"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold text-disa-dark mb-4" data-i18n="about.f2.t">منتجات طبيعية</h4>
+                    <p class="text-gray-600" data-i18n="about.f2.p">نختار أفضل المحاصيل الزراعية لضمان طعم أصيل وغني بالفوائد الغذائية.</p>
+                </div>
+                <!-- Feature 3 -->
+                <div class="bg-disa-light/50 p-8 rounded-3xl border border-disa-primary/20 hover:border-disa-primary transition-colors group" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center text-disa-dark text-2xl mb-6 shadow-md group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold text-disa-dark mb-4" data-i18n="about.f3.t">ثقة العائلة</h4>
+                    <p class="text-gray-600" data-i18n="about.f3.p">نعمل لنكون الخيار الأول والآمن لكل عائلة سورية تبحث عن التميز.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="py-24 bg-disa-light relative">
+        <!-- Decoration -->
+        <div class="absolute top-0 right-0 w-64 h-64 bg-white opacity-50 rounded-bl-[100px]"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16" data-aos="fade-in">
+                <div>
+                    <h2 class="text-disa-primary font-bold text-xl mb-2" data-i18n="products.title1">منتجاتنا</h2>
+                    <h3 class="text-4xl font-black text-disa-dark" data-i18n="products.title2">اكتشف تشكيلة ديسا المميزة</h3>
+                </div>
+                <div class="mt-6 md:mt-0">
+                    <button id="show-all-btn" onclick="toggleProducts()" class="bg-white border-2 border-disa-primary text-disa-primary px-6 py-2 rounded-full font-bold hover:bg-disa-primary hover:text-white transition-colors" data-i18n="btn.showAll">عرض الكل</button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Product 1 -->
+                <div class="product-card bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="relative aspect-[4/5] w-full overflow-hidden flex items-center justify-center p-8 bg-gradient-to-b from-gray-50/50 to-gray-100/30">
+                        <div class="absolute top-4 right-4 bg-disa-orange text-white text-xs font-bold px-3 py-1 rounded-full z-10" data-i18n="prod.new">جديد</div>
+                        <img src="assets/disa-1.jpg" alt="فريكة" class="w-full h-full object-contain transform group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <button onclick="addToCart('فريكة ديسا', 45000)" class="bg-white text-disa-dark w-12 h-12 rounded-full flex items-center justify-center text-xl hover:bg-disa-primary hover:text-white transform translate-y-4 group-hover:translate-y-0 transition-all shadow-md"><i class="fa-solid fa-cart-plus"></i></button>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-2">
+                        <div class="text-sm text-gray-500 mb-2" data-i18n="cat.grains">حبوب</div>
+                        <h4 class="text-xl font-bold text-disa-dark mb-2" data-i18n="prod.1">فريكة خضراء</h4>
+                        <div class="flex justify-between items-center mt-4">
+                            <span class="text-2xl font-black text-disa-primary">45,000 <span class="text-sm" data-i18n="currency">ل.س</span></span>
+                            <div class="flex gap-1 text-yellow-400 text-sm">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="relative aspect-[4/5] w-full overflow-hidden flex items-center justify-center p-8 bg-gradient-to-b from-gray-50/50 to-gray-100/30">
+                        <img src="assets/disa-2.jpg" alt="رز طويل" class="w-full h-full object-contain transform group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <button onclick="addToCart('رز طويل ديسا', 32000)" class="bg-white text-disa-dark w-12 h-12 rounded-full flex items-center justify-center text-xl hover:bg-disa-primary hover:text-white transform translate-y-4 group-hover:translate-y-0 transition-all shadow-md"><i class="fa-solid fa-cart-plus"></i></button>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-2">
+                        <div class="text-sm text-gray-500 mb-2" data-i18n="cat.grains">حبوب</div>
+                        <h4 class="text-xl font-bold text-disa-dark mb-2" data-i18n="prod.2">رز حبة طويلة</h4>
+                        <div class="flex justify-between items-center mt-4">
+                            <span class="text-2xl font-black text-disa-primary">32,000 <span class="text-sm" data-i18n="currency">ل.س</span></span>
+                            <div class="flex gap-1 text-yellow-400 text-sm">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star-half-stroke"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 group" data-aos="fade-up" data-aos-delay="300">
+                    <div class="relative aspect-[4/5] w-full overflow-hidden flex items-center justify-center p-8 bg-gradient-to-b from-gray-50/50 to-gray-100/30">
+                        <img src="assets/disa-3.jpg" alt="حمص" class="w-full h-full object-contain transform group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <button onclick="addToCart('حمص حب', 35000)" class="bg-white text-disa-dark w-12 h-12 rounded-full flex items-center justify-center text-xl hover:bg-disa-primary hover:text-white transform translate-y-4 group-hover:translate-y-0 transition-all shadow-md"><i class="fa-solid fa-cart-plus"></i></button>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-2">
+                        <div class="text-sm text-gray-500 mb-2" data-i18n="cat.legumes">بقوليات</div>
+                        <h4 class="text-xl font-bold text-disa-dark mb-2" data-i18n="prod.3">حمص حب</h4>
+                        <div class="flex justify-between items-center mt-4">
+                            <span class="text-2xl font-black text-disa-primary">35,000 <span class="text-sm" data-i18n="currency">ل.س</span></span>
+                            <div class="flex gap-1 text-yellow-400 text-sm">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="product-card bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 group" data-aos="fade-up" data-aos-delay="400">
+                    <div class="relative aspect-[4/5] w-full overflow-hidden flex items-center justify-center p-8 bg-gradient-to-b from-gray-50/50 to-gray-100/30">
+                        <div class="absolute top-4 right-4 bg-disa-primary text-white text-xs font-bold px-3 py-1 rounded-full z-10" data-i18n="prod.bestseller">الأكثر مبيعاً</div>
+                        <img src="assets/disa-4.jpg" alt="فول" class="w-full h-full object-contain transform group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <button onclick="addToCart('فول مدمس', 30000)" class="bg-white text-disa-dark w-12 h-12 rounded-full flex items-center justify-center text-xl hover:bg-disa-primary hover:text-white transform translate-y-4 group-hover:translate-y-0 transition-all shadow-md"><i class="fa-solid fa-cart-plus"></i></button>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-2">
+                        <div class="text-sm text-gray-500 mb-2" data-i18n="cat.legumes">بقوليات</div>
+                        <h4 class="text-xl font-bold text-disa-dark mb-2" data-i18n="prod.4">فول مدمس</h4>
+                        <div class="flex justify-between items-center mt-4">
+                            <span class="text-2xl font-black text-disa-primary">30,000 <span class="text-sm" data-i18n="currency">ل.س</span></span>
+                            <div class="flex gap-1 text-yellow-400 text-sm">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="product-card bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="relative aspect-[4/5] w-full overflow-hidden flex items-center justify-center p-8 bg-gradient-to-b from-gray-50/50 to-gray-100/30">
+                        <img src="assets/disa-5.jpg" alt="فاصوليا" class="w-full h-full object-contain transform group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <button onclick="addToCart('فاصوليا بيضاء', 38000)" class="bg-white text-disa-dark w-12 h-12 rounded-full flex items-center justify-center text-xl hover:bg-disa-primary hover:text-white transform translate-y-4 group-hover:translate-y-0 transition-all shadow-md"><i class="fa-solid fa-cart-plus"></i></button>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-2">
+                        <div class="text-sm text-gray-500 mb-2" data-i18n="cat.legumes">بقوليات</div>
+                        <h4 class="text-xl font-bold text-disa-dark mb-2" data-i18n="prod.5">فاصوليا بيضاء</h4>
+                        <div class="flex justify-between items-center mt-4">
+                            <span class="text-2xl font-black text-disa-primary">38,000 <span class="text-sm" data-i18n="currency">ل.س</span></span>
+                            <div class="flex gap-1 text-yellow-400 text-sm">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="product-card bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="relative aspect-[4/5] w-full overflow-hidden flex items-center justify-center p-8 bg-gradient-to-b from-gray-50/50 to-gray-100/30">
+                        <img src="assets/disa-6.jpg" alt="عدس" class="w-full h-full object-contain transform group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <button onclick="addToCart('عدس مجروش', 28000)" class="bg-white text-disa-dark w-12 h-12 rounded-full flex items-center justify-center text-xl hover:bg-disa-primary hover:text-white transform translate-y-4 group-hover:translate-y-0 transition-all shadow-md"><i class="fa-solid fa-cart-plus"></i></button>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-2">
+                        <div class="text-sm text-gray-500 mb-2" data-i18n="cat.legumes">بقوليات</div>
+                        <h4 class="text-xl font-bold text-disa-dark mb-2" data-i18n="prod.6">عدس مجروش</h4>
+                        <div class="flex justify-between items-center mt-4">
+                            <span class="text-2xl font-black text-disa-primary">28,000 <span class="text-sm" data-i18n="currency">ل.س</span></span>
+                            <div class="flex gap-1 text-yellow-400 text-sm">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star-half-stroke"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 7 -->
+                <div class="product-card bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 group" data-aos="fade-up" data-aos-delay="300">
+                    <div class="relative aspect-[4/5] w-full overflow-hidden flex items-center justify-center p-8 bg-gradient-to-b from-gray-50/50 to-gray-100/30">
+                        <img src="assets/disa-7.jpg" alt="معكرونة" class="w-full h-full object-contain transform group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <button onclick="addToCart('معكرونة', 15000)" class="bg-white text-disa-dark w-12 h-12 rounded-full flex items-center justify-center text-xl hover:bg-disa-primary hover:text-white transform translate-y-4 group-hover:translate-y-0 transition-all shadow-md"><i class="fa-solid fa-cart-plus"></i></button>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-2">
+                        <div class="text-sm text-gray-500 mb-2" data-i18n="cat.pasta">باستا</div>
+                        <h4 class="text-xl font-bold text-disa-dark mb-2" data-i18n="prod.7">معكرونة سباغيتي</h4>
+                        <div class="flex justify-between items-center mt-4">
+                            <span class="text-2xl font-black text-disa-primary">15,000 <span class="text-sm" data-i18n="currency">ل.س</span></span>
+                            <div class="flex gap-1 text-yellow-400 text-sm">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 8 -->
+                <div class="product-card bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 group" data-aos="fade-up" data-aos-delay="400">
+                    <div class="relative aspect-[4/5] w-full overflow-hidden flex items-center justify-center p-8 bg-gradient-to-b from-gray-50/50 to-gray-100/30">
+                        <div class="absolute top-4 right-4 bg-disa-orange text-white text-xs font-bold px-3 py-1 rounded-full z-10" data-i18n="prod.new">جديد</div>
+                        <img src="assets/disa-8.jpg" alt="سميد" class="w-full h-full object-contain transform group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <button onclick="addToCart('سميد', 22000)" class="bg-white text-disa-dark w-12 h-12 rounded-full flex items-center justify-center text-xl hover:bg-disa-primary hover:text-white transform translate-y-4 group-hover:translate-y-0 transition-all shadow-md"><i class="fa-solid fa-cart-plus"></i></button>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-2">
+                        <div class="text-sm text-gray-500 mb-2" data-i18n="cat.grains">حبوب</div>
+                        <h4 class="text-xl font-bold text-disa-dark mb-2" data-i18n="prod.8">سميد ناعم</h4>
+                        <div class="flex justify-between items-center mt-4">
+                            <span class="text-2xl font-black text-disa-primary">22,000 <span class="text-sm" data-i18n="currency">ل.س</span></span>
+                            <div class="flex gap-1 text-yellow-400 text-sm">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hidden Products (Toggled by Show All) -->
+                <div class="product-card hidden-product hidden bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="relative aspect-[4/5] w-full overflow-hidden flex items-center justify-center p-8 bg-gradient-to-b from-gray-50/50 to-gray-100/30">
+                        <img src="assets/disa-1.jpg" alt="عدس أحمر" class="w-full h-full object-contain transform group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <button onclick="addToCart('عدس أحمر', 25000)" class="bg-white text-disa-dark w-12 h-12 rounded-full flex items-center justify-center text-xl hover:bg-disa-primary hover:text-white transform translate-y-4 group-hover:translate-y-0 transition-all shadow-md"><i class="fa-solid fa-cart-plus"></i></button>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-2">
+                        <div class="text-sm text-gray-500 mb-2" data-i18n="cat.legumes">بقوليات</div>
+                        <h4 class="text-xl font-bold text-disa-dark mb-2" data-i18n="prod.9">عدس أحمر</h4>
+                        <div class="flex justify-between items-center mt-4">
+                            <span class="text-2xl font-black text-disa-primary">25,000 <span class="text-sm" data-i18n="currency">ل.س</span></span>
+                            <div class="flex gap-1 text-yellow-400 text-sm">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card hidden-product hidden bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="relative aspect-[4/5] w-full overflow-hidden flex items-center justify-center p-8 bg-gradient-to-b from-gray-50/50 to-gray-100/30">
+                        <img src="assets/disa-2.jpg" alt="رز قصير" class="w-full h-full object-contain transform group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <button onclick="addToCart('رز قصير', 29000)" class="bg-white text-disa-dark w-12 h-12 rounded-full flex items-center justify-center text-xl hover:bg-disa-primary hover:text-white transform translate-y-4 group-hover:translate-y-0 transition-all shadow-md"><i class="fa-solid fa-cart-plus"></i></button>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-2">
+                        <div class="text-sm text-gray-500 mb-2" data-i18n="cat.grains">حبوب</div>
+                        <h4 class="text-xl font-bold text-disa-dark mb-2" data-i18n="prod.10">رز قصير</h4>
+                        <div class="flex justify-between items-center mt-4">
+                            <span class="text-2xl font-black text-disa-primary">29,000 <span class="text-sm" data-i18n="currency">ل.س</span></span>
+                            <div class="flex gap-1 text-yellow-400 text-sm">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card hidden-product hidden bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 group" data-aos="fade-up" data-aos-delay="300">
+                    <div class="relative aspect-[4/5] w-full overflow-hidden flex items-center justify-center p-8 bg-gradient-to-b from-gray-50/50 to-gray-100/30">
+                        <img src="assets/disa-3.jpg" alt="برغل" class="w-full h-full object-contain transform group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <button onclick="addToCart('برغل خشن', 18000)" class="bg-white text-disa-dark w-12 h-12 rounded-full flex items-center justify-center text-xl hover:bg-disa-primary hover:text-white transform translate-y-4 group-hover:translate-y-0 transition-all shadow-md"><i class="fa-solid fa-cart-plus"></i></button>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-2">
+                        <div class="text-sm text-gray-500 mb-2" data-i18n="cat.grains">حبوب</div>
+                        <h4 class="text-xl font-bold text-disa-dark mb-2" data-i18n="prod.11">برغل خشن</h4>
+                        <div class="flex justify-between items-center mt-4">
+                            <span class="text-2xl font-black text-disa-primary">18,000 <span class="text-sm" data-i18n="currency">ل.س</span></span>
+                            <div class="flex gap-1 text-yellow-400 text-sm">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star-half-stroke"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card hidden-product hidden bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 group" data-aos="fade-up" data-aos-delay="400">
+                    <div class="relative aspect-[4/5] w-full overflow-hidden flex items-center justify-center p-8 bg-gradient-to-b from-gray-50/50 to-gray-100/30">
+                        <img src="assets/disa-4.jpg" alt="ذرة صفراء" class="w-full h-full object-contain transform group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <button onclick="addToCart('ذرة صفراء', 20000)" class="bg-white text-disa-dark w-12 h-12 rounded-full flex items-center justify-center text-xl hover:bg-disa-primary hover:text-white transform translate-y-4 group-hover:translate-y-0 transition-all shadow-md"><i class="fa-solid fa-cart-plus"></i></button>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-2">
+                        <div class="text-sm text-gray-500 mb-2" data-i18n="cat.grains">حبوب</div>
+                        <h4 class="text-xl font-bold text-disa-dark mb-2" data-i18n="prod.12">ذرة صفراء</h4>
+                        <div class="flex justify-between items-center mt-4">
+                            <span class="text-2xl font-black text-disa-primary">20,000 <span class="text-sm" data-i18n="currency">ل.س</span></span>
+                            <div class="flex gap-1 text-yellow-400 text-sm">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brand Gallery Section -->
+    <section class="py-24 bg-white relative">
+        <!-- Decoration -->
+        <div class="absolute -left-20 top-20 w-64 h-64 bg-disa-orange rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
+
+        <div class="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
+                <h2 class="text-disa-orange font-bold text-xl mb-2" data-i18n="gallery.title1">معرض ديسا</h2>
+                <h3 class="text-4xl font-black text-disa-dark mb-6" data-i18n="gallery.title2">تشكيلتنا المختارة من الطبيعة إليك</h3>
+                <p class="text-gray-600" data-i18n="gallery.desc">نقدم لكم مجموعة واسعة من أفضل أنواع الحبوب والبقوليات المختارة بعناية لتناسب كل الأذواق.</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6" data-aos="zoom-in" data-aos-delay="200">
+                <div class="overflow-hidden rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-300 group aspect-square border-2 border-transparent hover:border-disa-primary/30">
+                    <img src="assets/disa-1.jpg" alt="Disa Product 1" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                </div>
+                <div class="overflow-hidden rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-300 group aspect-square border-2 border-transparent hover:border-disa-primary/30">
+                    <img src="assets/disa-2.jpg" alt="Disa Product 2" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                </div>
+                <div class="overflow-hidden rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-300 group aspect-square border-2 border-transparent hover:border-disa-primary/30">
+                    <img src="assets/disa-3.jpg" alt="Disa Product 3" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                </div>
+                <div class="overflow-hidden rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-300 group aspect-square border-2 border-transparent hover:border-disa-primary/30">
+                    <img src="assets/disa-4.jpg" alt="Disa Product 4" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                </div>
+                <div class="overflow-hidden rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-300 group aspect-square border-2 border-transparent hover:border-disa-primary/30">
+                    <img src="assets/disa-5.jpg" alt="Disa Product 5" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                </div>
+                <div class="overflow-hidden rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-300 group aspect-square border-2 border-transparent hover:border-disa-primary/30">
+                    <img src="assets/disa-6.jpg" alt="Disa Product 6" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                </div>
+                <div class="overflow-hidden rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-300 group aspect-square border-2 border-transparent hover:border-disa-primary/30">
+                    <img src="assets/disa-7.jpg" alt="Disa Product 7" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                </div>
+                <div class="overflow-hidden rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-300 group aspect-square border-2 border-transparent hover:border-disa-primary/30">
+                    <img src="assets/disa-8.jpg" alt="Disa Product 8" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                </div>
+            </div>
+            
+           
+        </div>
+    </section>
+
+    <!-- Premium Banners Grid -->
+    <section class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4 md:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Large Banner -->
+                <div class="md:col-span-2 relative rounded-3xl overflow-hidden group shadow-2xl h-[400px]" data-aos="fade-right">
+                    <img src="assets/premium-banner.jpg" alt="Banner 1" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex flex-col justify-end p-10">
+                        <span class="bg-disa-orange text-white text-sm font-bold px-4 py-1 rounded-full w-max mb-4" data-i18n="banners.badge">عرض خاص</span>
+                        <h3 class="text-3xl md:text-5xl font-black text-white mb-4" data-i18n="banners.title1">تشكيلة البقوليات الفاخرة</h3>
+                        <p class="text-gray-200 mb-6 max-w-md" data-i18n="banners.desc">احصل على خصم 20% عند شرائك الباقة المتكاملة من ديسا، غنية بالفوائد وتناسب جميع طبخاتك.</p>
+                        <button onclick="document.getElementById('products').scrollIntoView({behavior: 'smooth'})" class="bg-white text-disa-dark px-8 py-3 rounded-full font-bold w-max hover:bg-disa-primary hover:text-white transition-colors shadow-lg" data-i18n="btn.shop">تسوق الآن</button>
+                    </div>
+                </div>
+                <!-- Small Banners -->
+                <div class="flex flex-col gap-6 h-[400px]">
+                    <div class="flex-1 relative rounded-3xl overflow-hidden group shadow-xl" data-aos="fade-left" data-aos-delay="100">
+                        <img src="assets/disa-1.jpg" alt="Banner 2" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 opacity-50 mix-blend-overlay">
+                        <div class="absolute inset-0 bg-gradient-to-br from-disa-primary to-disa-dark opacity-90"></div>
+                        <div class="absolute inset-0 flex flex-col justify-center items-center text-center p-6 z-10">
+                            <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center text-white mb-4 backdrop-blur-sm"><i class="fa-solid fa-leaf"></i></div>
+                            <h3 class="text-2xl font-black text-white mb-2" data-i18n="banners.title2">فريكة طازجة</h3>
+                            <a href="#products" class="text-white/80 border-b border-white/50 hover:text-white hover:border-white transition-colors pb-1 text-sm font-bold" data-i18n="banners.more">اكتشف المزيد</a>
+                        </div>
+                    </div>
+                    <div class="flex-1 relative rounded-3xl overflow-hidden group shadow-xl" data-aos="fade-left" data-aos-delay="200">
+                        <img src="assets/disa-2.jpg" alt="Banner 3" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 opacity-50 mix-blend-overlay">
+                        <div class="absolute inset-0 bg-gradient-to-br from-disa-orange to-red-600 opacity-90"></div>
+                        <div class="absolute inset-0 flex flex-col justify-center items-center text-center p-6 z-10">
+                            <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center text-white mb-4 backdrop-blur-sm"><i class="fa-solid fa-bowl-rice"></i></div>
+                            <h3 class="text-2xl font-black text-white mb-2" data-i18n="banners.title3">أرز نخب أول</h3>
+                            <a href="#products" class="text-white/80 border-b border-white/50 hover:text-white hover:border-white transition-colors pb-1 text-sm font-bold" data-i18n="banners.more">اكتشف المزيد</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promotional Banner Section -->
+    <section id="offers" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 md:px-8">
+            <div class="relative rounded-[2.5rem] overflow-hidden bg-disa-dark text-white flex flex-col md:flex-row items-center shadow-2xl" data-aos="zoom-in">
+                <!-- Abstract pattern overlay -->
+                <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMiIgZmlsbD0iI2ZmZiIgZmlsbC1vcGFjaXR5PSIwLjEiLz48L3N2Zz4=')] opacity-30"></div>
+                
+                <div class="p-12 md:p-16 md:w-1/2 relative z-10">
+                    <div class="inline-block px-4 py-1 rounded-full bg-disa-orange text-white font-bold mb-6 text-sm" data-i18n="banners.badge">عرض خاص</div>
+                    <h2 class="text-4xl md:text-6xl font-black mb-6 leading-tight" data-i18n="offers.title1">رز صحي وخفيف...<br><span class="text-disa-primary">لصحة عائلتك</span></h2>
+                    <p class="text-lg text-gray-300 mb-8" data-i18n="offers.desc">اطلب الآن واحصل على حسم 20% على جميع منتجات الأرز الطويل من ديسا.</p>
+                    <button class="bg-disa-primary hover:bg-white hover:text-disa-dark text-white px-8 py-4 rounded-full font-bold transition-colors text-lg shadow-lg" data-i18n="offers.btn">اطلب العرض الآن</button>
+                </div>
+                <div class="md:w-1/2 w-full h-80 md:h-[500px] relative z-10">
+                    <img src="assets/disa-2.jpg" alt="Rice bag" class="w-full h-full object-cover rounded-tl-[100px] md:rounded-l-none md:rounded-tr-[100px]">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-20 bg-disa-light/30">
+        <div class="max-w-7xl mx-auto px-4 md:px-8">
+            <div class="grid md:grid-cols-3 gap-12 text-center">
+                <div data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-20 h-20 mx-auto bg-white rounded-full flex items-center justify-center shadow-lg mb-6 text-disa-primary text-3xl">
+                        <i class="fa-solid fa-truck-fast"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-disa-dark mb-3" data-i18n="feat.1.t">شحن سريع وموثوق</h3>
+                    <p class="text-gray-600" data-i18n="feat.1.p">نوصل منتجاتنا إلى كافة أنحاء سوريا بأسرع وقت مع الحفاظ على جودة التغليف.</p>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-20 h-20 mx-auto bg-white rounded-full flex items-center justify-center shadow-lg mb-6 text-disa-primary text-3xl">
+                        <i class="fa-solid fa-seedling"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-disa-dark mb-3" data-i18n="feat.2.t">طبيعي 100%</h3>
+                    <p class="text-gray-600" data-i18n="feat.2.p">نختار أفضل المحاصيل الطبيعية ونضمن خلوها من المواد الحافظة والإضافات.</p>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-20 h-20 mx-auto bg-white rounded-full flex items-center justify-center shadow-lg mb-6 text-disa-primary text-3xl">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-disa-dark mb-3" data-i18n="feat.3.t">تعبئة معقمة</h3>
+                    <p class="text-gray-600" data-i18n="feat.3.p">نستخدم أحدث تقنيات التعبئة الآلية لضمان نظافة وسلامة غذاء عائلتك.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-24 bg-white relative overflow-hidden">
+        <div class="absolute -right-20 top-20 w-64 h-64 bg-disa-primary rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
+        <div class="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
+                <h2 class="text-disa-orange font-bold text-xl mb-2" data-i18n="test.title1">آراء عملائنا</h2>
+                <h3 class="text-4xl font-black text-disa-dark" data-i18n="test.title2">ماذا يقولون عن ديسا؟</h3>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-gray-50 p-8 rounded-3xl shadow-sm hover:shadow-md transition-shadow relative" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fa-solid fa-quote-right text-4xl text-disa-primary/20 absolute top-6 right-6"></i>
+                    <div class="flex text-yellow-400 mb-4"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p class="text-gray-700 mb-6 leading-relaxed" data-i18n="test.1.text">"الفريكة من ديسا لا يعلى عليها، نظافة وطعم أصيل يذكرنا بأيام زمان. دائماً خياري الأول لمطبخي."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-disa-light rounded-full flex items-center justify-center text-disa-primary font-bold">أم</div>
+                        <div><h5 class="font-bold text-disa-dark" data-i18n="test.1.name">أم محمد</h5><span class="text-sm text-gray-500" data-i18n="test.1.role">ربة منزل - دمشق</span></div>
+                    </div>
+                </div>
+                <div class="bg-gray-50 p-8 rounded-3xl shadow-sm hover:shadow-md transition-shadow relative" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fa-solid fa-quote-right text-4xl text-disa-primary/20 absolute top-6 right-6"></i>
+                    <div class="flex text-yellow-400 mb-4"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p class="text-gray-700 mb-6 leading-relaxed" data-i18n="test.2.text">"الرز الطويل ممتاز جداً، حبته ما بتكسر وبياخد العقل بالطبخ. شكراً لديسا على هذه الجودة الرائعة."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-disa-orange/20 rounded-full flex items-center justify-center text-disa-orange font-bold">س</div>
+                        <div><h5 class="font-bold text-disa-dark" data-i18n="test.2.name">سامر الأحمد</h5><span class="text-sm text-gray-500" data-i18n="test.2.role">شيف - ريف دمشق</span></div>
+                    </div>
+                </div>
+                <div class="bg-gray-50 p-8 rounded-3xl shadow-sm hover:shadow-md transition-shadow relative" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fa-solid fa-quote-right text-4xl text-disa-primary/20 absolute top-6 right-6"></i>
+                    <div class="flex text-yellow-400 mb-4"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p class="text-gray-700 mb-6 leading-relaxed" data-i18n="test.3.text">"أكثر شي بيعجبني بمنتجاتكم هو التغليف النظيف والخالي من الشوائب. المعكرونة تبعكم أدمنت عليها عائلتي."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold">ل</div>
+                        <div><h5 class="font-bold text-disa-dark" data-i18n="test.3.name">لينا خليل</h5><span class="text-sm text-gray-500" data-i18n="test.3.role">موظفة - حلب</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section id="contact" class="py-24 bg-gray-50 relative">
+        <div class="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
+                <h2 class="text-disa-orange font-bold text-xl mb-2" data-i18n="contact.title1">تواصل معنا</h2>
+                <h3 class="text-4xl font-black text-disa-dark" data-i18n="contact.title2">نحن هنا لخدمتك</h3>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 bg-white rounded-3xl shadow-xl overflow-hidden">
+                <!-- Contact Info -->
+                <div class="bg-disa-dark text-white p-10 md:p-16 relative overflow-hidden">
+                    <div class="absolute -right-20 -bottom-20 w-64 h-64 bg-disa-primary rounded-full mix-blend-multiply opacity-20 filter blur-3xl"></div>
+                    <h4 class="text-2xl font-bold mb-8 relative z-10" data-i18n="contact.info">معلومات التواصل</h4>
+                    <ul class="space-y-6 relative z-10">
+                        <li class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-location-dot text-disa-orange text-xl"></i>
+                            </div>
+                            <div>
+                                <h5 class="text-white text-sm mb-1" data-i18n="contact.addrLabel">العنوان</h5>
+                                <p class="font-bold text-lg" data-i18n="contact.address">دمشق - ريف دمشق، سوريا</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-phone text-disa-orange text-xl"></i>
+                            </div>
+                            <div>
+                                <h5 class="text-white text-sm mb-1" data-i18n="contact.phoneLabel">الهاتف</h5>
+                                <p class="font-bold text-lg" dir="ltr" data-i18n="contact.phone">+963 900 000 000</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-envelope text-disa-orange text-xl"></i>
+                            </div>
+                            <div>
+                                <h5 class="text-white text-sm mb-1" data-i18n="contact.emailLabel">البريد الإلكتروني</h5>
+                                <p class="font-bold text-lg">info@disa.com</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Form -->
+                <div class="p-10 md:p-16">
+                    <form onsubmit="event.preventDefault(); alert(currentLang === 'ar' ? 'تم إرسال رسالتك بنجاح!' : 'Your message has been sent successfully!'); this.reset();">
+                        <div class="space-y-6">
+                            <div>
+                                <label class="block text-sm font-bold text-gray-700 mb-2" data-i18n="contact.name">الاسم الكامل</label>
+                                <input type="text" required class="w-full px-5 py-4 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none focus:border-disa-primary focus:ring-2 focus:ring-disa-primary/20 transition-all">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold text-gray-700 mb-2" data-i18n="contact.email">البريد الإلكتروني</label>
+                                <input type="email" required class="w-full px-5 py-4 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none focus:border-disa-primary focus:ring-2 focus:ring-disa-primary/20 transition-all text-left" dir="ltr">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold text-gray-700 mb-2" data-i18n="contact.msg">الرسالة</label>
+                                <textarea rows="4" required class="w-full px-5 py-4 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none focus:border-disa-primary focus:ring-2 focus:ring-disa-primary/20 transition-all resize-none"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-disa-primary text-white py-4 rounded-xl font-bold hover:bg-disa-dark transition-all shadow-lg flex items-center justify-center gap-2">
+                                <span data-i18n="contact.send">إرسال الرسالة</span> <i class="fa-solid fa-paper-plane ltr-arrow"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer" class="bg-disa-text text-white pt-20 pb-10 relative overflow-hidden">
+        <!-- Decoration -->
+        <div class="absolute -top-40 -right-40 w-80 h-80 bg-disa-primary rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
+            <div class="grid md:grid-cols-4 gap-12 mb-16">
+                <!-- Brand -->
+                <div class="col-span-1 md:col-span-1">
+                    <!-- Logo -->
+                    <a href="#" class="flex items-center group mb-6">
+                        <img src="assets/logo.jpg" alt="Disa Logo" class="h-14 w-auto object-contain mix-blend-multiply group-hover:scale-105 transition-transform">
+                    </a>
+                    <p class="text-gray-400 mb-6 leading-relaxed" data-i18n="footer.desc">بكل لقمة حكاية. جودة تراها، نقاء تشعر به، وطعام تثق به كل عائلة سورية.</p>
+                    <div class="flex gap-4">
+                        <a href="https://www.facebook.com/profile.php?id=61587230816395" target="_blank" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#1877F2] hover:text-white transition-colors shadow-lg"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-disa-orange hover:text-white transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-disa-primary hover:text-white transition-colors"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Links -->
+                <div>
+                    <h4 class="text-lg font-bold text-white mb-6 relative inline-block">
+                        <span data-i18n="footer.links">روابط سريعة</span>
+                        <span class="absolute -bottom-2 right-0 w-1/2 h-1 bg-disa-primary rounded-full"></span>
+                    </h4>
+                    <ul class="space-y-3">
+                        <li><a href="#home" class="text-gray-400 hover:text-disa-primary transition-colors flex items-center gap-2"><i class="fa-solid fa-angle-left text-xs ltr-arrow"></i> <span data-i18n="nav.home">الرئيسية</span></a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-disa-primary transition-colors flex items-center gap-2"><i class="fa-solid fa-angle-left text-xs ltr-arrow"></i> <span data-i18n="nav.about">من نحن</span></a></li>
+                        <li><a href="#products" class="text-gray-400 hover:text-disa-primary transition-colors flex items-center gap-2"><i class="fa-solid fa-angle-left text-xs ltr-arrow"></i> <span data-i18n="nav.products">المنتجات</span></a></li>
+                        <li><a href="#offers" class="text-gray-400 hover:text-disa-primary transition-colors flex items-center gap-2"><i class="fa-solid fa-angle-left text-xs ltr-arrow"></i> <span data-i18n="nav.offers">العروض</span></a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div class="col-span-1 md:col-span-2">
+                    <h4 class="text-lg font-bold text-white mb-6 relative inline-block">
+                        <span data-i18n="contact.info">معلومات التواصل</span>
+                        <span class="absolute -bottom-2 right-0 w-1/2 h-1 bg-disa-primary rounded-full"></span>
+                    </h4>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-disa-primary text-xl flex-shrink-0">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-bold mb-1" data-i18n="contact.addrLabel">العنوان</h5>
+                                <p class="text-gray-400 text-sm" data-i18n="contact.address">ريف دمشق، سوريا</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-disa-primary text-xl flex-shrink-0">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-bold mb-1" data-i18n="contact.phoneLabel">الهاتف</h5>
+                                <p class="text-gray-400 text-sm dir-ltr">099 220 618</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-disa-primary text-xl flex-shrink-0">
+                                <i class="fa-brands fa-instagram"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-bold mb-1" data-i18n="contact.instaLabel">انستغرام</h5>
+                                <p class="text-gray-400 text-sm dir-ltr">@food_disa</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-gray-500 text-sm" data-i18n="footer.copy">جميع الحقوق محفوظة لصالح شركة ديسا &copy; 2026</p>
+                <div class="text-gray-500 text-sm flex gap-4">
+                    <button onclick="openPolicyModal('privacy')" class="hover:text-white transition-colors" data-i18n="footer.privacy">سياسة الخصوصية</button>
+                    <button onclick="openPolicyModal('terms')" class="hover:text-white transition-colors" data-i18n="footer.terms">الشروط والأحكام</button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Checkout Modal -->
+    <div id="checkout-modal" class="fixed inset-0 bg-black/60 z-[60] hidden opacity-0 transition-opacity duration-300 flex items-center justify-center px-4">
+        <div class="bg-white w-full max-w-lg rounded-3xl overflow-hidden shadow-2xl transform scale-95 transition-transform duration-300" id="checkout-content">
+            <div id="step-address" class="p-8">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-2xl font-black text-disa-dark">تفاصيل التوصيل</h3>
+                    <button onclick="closeCheckout()" class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-gray-200"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <form id="checkout-form" onsubmit="event.preventDefault(); nextStep();">
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">الاسم الكامل</label>
+                            <input type="text" required class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none focus:border-disa-primary focus:ring-2 focus:ring-disa-primary/20 transition-all" placeholder="محمد الأحمد">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">رقم الهاتف</label>
+                            <input type="tel" required class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none focus:border-disa-primary focus:ring-2 focus:ring-disa-primary/20 transition-all" placeholder="09xxxxxxxx">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">المحافظة / العنوان</label>
+                            <input type="text" required class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none focus:border-disa-primary focus:ring-2 focus:ring-disa-primary/20 transition-all" placeholder="دمشق، المزة...">
+                        </div>
+                    </div>
+                    <button type="submit" class="w-full bg-disa-primary text-white py-4 rounded-xl font-bold mt-8 hover:bg-disa-dark transition-all shadow-lg flex items-center justify-center gap-2">
+                        المتابعة للدفع <i class="fa-solid fa-arrow-left"></i>
+                    </button>
+                </form>
+            </div>
+
+            <div id="step-payment" class="p-8 hidden">
+                <div class="flex items-center gap-4 mb-6">
+                    <button onclick="prevStep()" class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-gray-200"><i class="fa-solid fa-arrow-right"></i></button>
+                    <h3 class="text-2xl font-black text-disa-dark">الدفع الآمن</h3>
+                </div>
+                <div class="w-full h-48 bg-gradient-to-br from-gray-800 to-black rounded-2xl p-6 text-white relative shadow-xl overflow-hidden mb-8">
+                    <div class="absolute -right-10 -top-10 w-40 h-40 bg-white/10 rounded-full blur-2xl"></div>
+                    <div class="flex justify-between items-start mb-8 relative z-10">
+                        <i class="fa-brands fa-cc-visa text-4xl"></i>
+                        <i class="fa-solid fa-wifi rotate-90 text-xl opacity-50"></i>
+                    </div>
+                    <div class="text-xl tracking-[0.2em] font-mono mb-4 relative z-10" id="card-number-display" dir="ltr">**** **** **** ****</div>
+                    <div class="flex justify-between text-xs font-mono relative z-10 text-gray-300">
+                        <div id="card-name-display">JOHN DOE</div>
+                        <div id="card-expiry-display">MM/YY</div>
+                    </div>
+                </div>
+                
+                <form id="payment-form" onsubmit="event.preventDefault(); completeOrder();">
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">رقم البطاقة</label>
+                            <input type="text" required maxlength="19" class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none focus:border-gray-800 focus:ring-2 focus:ring-gray-200 font-mono" placeholder="0000 0000 0000 0000" oninput="updateCard(this, 'card-number-display', '**** **** **** ****')">
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-bold text-gray-700 mb-1">تاريخ الانتهاء</label>
+                                <input type="text" required maxlength="5" class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none focus:border-gray-800 focus:ring-2 focus:ring-gray-200 font-mono" placeholder="MM/YY" oninput="updateCard(this, 'card-expiry-display', 'MM/YY')">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold text-gray-700 mb-1">رمز الحماية (CVV)</label>
+                                <input type="password" required maxlength="3" class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none focus:border-gray-800 focus:ring-2 focus:ring-gray-200 font-mono" placeholder="123">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">الاسم على البطاقة</label>
+                            <input type="text" required class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none focus:border-gray-800 focus:ring-2 focus:ring-gray-200 uppercase" placeholder="الاسم" oninput="updateCard(this, 'card-name-display', 'JOHN DOE')">
+                        </div>
+                    </div>
+                    <button type="submit" class="w-full bg-gray-900 text-white py-4 rounded-xl font-bold mt-8 hover:bg-black transition-all shadow-lg flex items-center justify-center gap-2">
+                        دفع <span id="checkout-total">0</span> ل.س <i class="fa-solid fa-lock"></i>
+                    </button>
+                </form>
+            </div>
+
+            <div id="step-success" class="p-12 text-center hidden">
+                <div class="w-24 h-24 bg-green-100 text-green-500 rounded-full flex items-center justify-center text-4xl mx-auto mb-6">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+                <h3 class="text-3xl font-black text-disa-dark mb-4">تم الطلب بنجاح!</h3>
+                <p class="text-gray-600 mb-8">شكراً لتسوقك من ديسا. تم استلام طلبك وسنقوم بتجهيزه وشحنه إليك قريباً.</p>
+                <div class="bg-gray-50 rounded-xl p-4 mb-8 text-sm">
+                    <span class="text-gray-500">رقم الطلب: </span> <span class="font-mono font-bold text-disa-dark">#ORD-202688</span>
+                </div>
+                <button onclick="closeCheckout(); resetCart();" class="w-full bg-disa-primary text-white py-4 rounded-xl font-bold hover:bg-disa-dark transition-all shadow-md">
+                    العودة للرئيسية
+                </button>
+            </div>
+        </div>
+    </div>
+
+    
+    <!-- Policy Modals -->
+    <div id="policy-modal" class="fixed inset-0 bg-black/60 z-[70] hidden opacity-0 transition-opacity duration-300 flex items-center justify-center px-4">
+        <div class="bg-white w-full max-w-2xl rounded-3xl overflow-hidden shadow-2xl transform scale-95 transition-transform duration-300" id="policy-content">
+            <div class="p-8 border-b border-gray-100 flex justify-between items-center bg-gray-50">
+                <h3 id="policy-modal-title" class="text-2xl font-black text-disa-dark">سياسة الخصوصية</h3>
+                <button onclick="closePolicyModal()" class="w-8 h-8 rounded-full bg-white shadow-sm flex items-center justify-center text-gray-500 hover:bg-gray-100 hover:text-disa-primary transition-colors"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="p-8 max-h-[60vh] overflow-y-auto">
+                <p id="policy-modal-text" class="text-gray-600 leading-relaxed text-lg">محتوى السياسة...</p>
+            </div>
+            <div class="p-6 bg-gray-50 border-t border-gray-100 flex justify-end">
+                <button onclick="closePolicyModal()" class="bg-disa-primary text-white px-8 py-3 rounded-xl font-bold hover:bg-disa-dark transition-all" data-i18n="modal.close">إغلاق</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
