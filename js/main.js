@@ -20,6 +20,29 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+// Mobile Menu Logic
+function toggleMobileMenu() {
+    const menu = document.getElementById('mobile-menu');
+    const isClosed = menu.classList.contains('translate-x-full');
+    
+    if (isClosed) {
+        menu.classList.remove('translate-x-full');
+        menu.classList.add('translate-x-0');
+        document.body.style.overflow = 'hidden';
+    } else {
+        menu.classList.add('translate-x-full');
+        menu.classList.remove('translate-x-0');
+        document.body.style.overflow = '';
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+    }
+});
+
 // Cart Logic
 let cart = [];
 const cartCount = document.getElementById('cart-count');

@@ -107,6 +107,23 @@
         </div>
     </header>
 
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-white z-[60] transform translate-x-full transition-transform duration-300 flex flex-col pt-24 px-8 pb-8 md:hidden">
+        <button onclick="toggleMobileMenu()" class="absolute top-6 left-6 text-gray-500 hover:text-disa-primary text-2xl"><i class="fa-solid fa-xmark"></i></button>
+        <nav class="flex flex-col gap-6 text-2xl font-black text-center mt-10">
+            <a href="#home" onclick="toggleMobileMenu()" class="text-disa-dark hover:text-disa-primary transition-colors" data-i18n="nav.home">الرئيسية</a>
+            <a href="#about" onclick="toggleMobileMenu()" class="text-gray-600 hover:text-disa-primary transition-colors" data-i18n="nav.about">من نحن</a>
+            <a href="#products" onclick="toggleMobileMenu()" class="text-gray-600 hover:text-disa-primary transition-colors" data-i18n="nav.products">المنتجات</a>
+            <a href="#offers" onclick="toggleMobileMenu()" class="text-gray-600 hover:text-disa-primary transition-colors" data-i18n="nav.offers">العروض</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="text-gray-600 hover:text-disa-primary transition-colors" data-i18n="nav.contact">اتصل بنا</a>
+        </nav>
+        <div class="mt-auto pt-10 flex justify-center gap-6">
+            <a href="#" class="w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center hover:bg-disa-primary hover:text-white transition-colors text-xl"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center hover:bg-disa-orange hover:text-white transition-colors text-xl"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center hover:bg-disa-primary hover:text-white transition-colors text-xl"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+    </div>
+
     <!-- Shopping Cart Sidebar -->
     <div id="cart-sidebar" class="fixed top-0 left-0 h-full w-80 bg-white shadow-2xl z-[60] transform -translate-x-full transition-transform duration-300 flex flex-col">
         <div class="p-6 bg-disa-primary text-white flex justify-between items-center rounded-br-3xl">
@@ -148,11 +165,11 @@
                 <p class="text-xl text-gray-600 mb-8 max-w-lg leading-relaxed font-medium" data-i18n="hero.desc">
                     من قلب سوريا إلى كل بيت. حبوب وبقوليات مختارة بعناية فائقة لتمنحك طعماً طبيعياً غنياً وصحياً.
                 </p>
-                <div class="flex gap-4">
-                    <a href="#products" class="bg-disa-primary text-white px-8 py-4 rounded-full font-bold hover:bg-disa-dark transition-all transform hover:-translate-y-1 shadow-lg shadow-disa-primary/30 flex items-center gap-2" data-i18n="btn.shop">
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#products" class="bg-disa-primary text-white px-8 py-4 rounded-full font-bold hover:bg-disa-dark transition-all transform hover:-translate-y-1 shadow-lg shadow-disa-primary/30 flex justify-center items-center gap-2" data-i18n="btn.shop">
                         تسوق الآن <i class="fa-solid fa-arrow-left ltr-arrow"></i>
                     </a>
-                    <a href="#offers" class="bg-white text-disa-dark px-8 py-4 rounded-full font-bold hover:bg-gray-50 transition-all border border-gray-200 shadow-sm flex items-center gap-2" data-i18n="btn.offers">
+                    <a href="#offers" class="bg-white text-disa-dark px-8 py-4 rounded-full font-bold hover:bg-gray-50 transition-all border border-gray-200 shadow-sm flex justify-center items-center gap-2" data-i18n="btn.offers">
                         شاهد العروض
                     </a>
                 </div>
